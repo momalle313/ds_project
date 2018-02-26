@@ -16,8 +16,8 @@ if __name__ == '__main__':
     df = pd.merge(AAA_df, MLB_df, how='inner', on=['Name'])
     
     # rename correctly
-    df = df.rename(columns=lambda x: x[:-2] + '_AAA' if x[-2:] == '_x' else (x[:-2] + '_MLB' if x[:-2:] == '_y' else x))
+    df = df.rename(columns=lambda x: x[:-2] + '_AAA' if x[-2:] == '_x' else (x[:-2] + '_MLB' if x[-2:] == '_y' else x))
 
-    df.to_csv(data_path + 'overlap.csv')
+    df.to_csv(data_path + 'overlap_AAA_MLB.csv', index=False)
     
 

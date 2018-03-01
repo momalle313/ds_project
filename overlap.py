@@ -46,7 +46,7 @@ if __name__ == '__main__':
     majors.drop('WAR', axis=1, inplace = True)
     majors.drop('PA', axis=1, inplace = True) 
  
-    table  = pd.merge(minors, majors, how='inner', on=['Name'])
+    table  = pd.merge(minors, majors, how='left', on=['Name'])
     table = to_ordinal(table)
     table.rename(columns={'WAR': 'WAR_MLB'}, inplace=True)
     table.to_csv('./data/' + sys.argv[1] +'_overlap.csv', index=False, float_format='%.0f')

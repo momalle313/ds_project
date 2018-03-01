@@ -10,6 +10,8 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+
 
 def usage(program):
     print 'Usage: {} league'.format(program)
@@ -44,5 +46,9 @@ if __name__ == '__main__':
     # test
     y_predict = dt.predict(X_test)
     
-    print accuracy_score(y_test, y_predict)
+    print "Entropy: {}".format(accuracy_score(y_test, y_predict))
 
+    gauss = GaussianNB()
+    y_pred = gauss.fit(X_train, y_train).predict(X_test)
+
+    print "Bayes: {}".format(accuracy_score(y_test, y_pred))

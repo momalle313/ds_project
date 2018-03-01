@@ -49,7 +49,7 @@ if __name__ == '__main__':
     table  = pd.merge(minors, majors, how='inner', on=['Name'])
     table = to_ordinal(table)
     table.rename(columns={'WAR': 'WAR_MLB'}, inplace=True)
-    table.to_csv('./data/' + sys.argv[1] +'_overlap.csv')
+    table.to_csv('./data/' + sys.argv[1] +'_overlap.csv', index=False, float_format='%.0f')
 
 
 

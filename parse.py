@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-import sys
 import os
+import sys
 
 
 import numpy as np
@@ -92,4 +92,4 @@ if __name__ == '__main__':
     numerical_data.to_csv('./data/' + sys.argv[1] + '_numerical.csv', float_format='%.3f')
     
     ordinal_data = to_ordinal(numerical_data)
-    ordinal_data.to_csv('./data/' + sys.argv[1] + '_ordinal.csv')
+    ordinal_data.to_csv('./data/' + sys.argv[1] + '_ordinal.csv', float_format='%.0f')

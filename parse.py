@@ -9,7 +9,8 @@ import pandas as pd
 import scipy.stats as stats
 
 data_path = './raw_data/'
-keep =          ['Name', 'PA', 'BB%', 'K%', 'BB/K', 'AVG', 'OBP', 'SLG', 'OPS']
+#keep =          ['Name', 'PA', 'BB%', 'K%', 'BB/K', 'AVG', 'OBP', 'SLG', 'OPS']
+keep =          ['Name', 'PA', 'BB%', 'K%', 'AVG', 'OBP', 'SLG', 'OPS']
 higher_better = [False,  True, True, False, True, True, True, True, True] 
 
 remove = []
@@ -22,6 +23,7 @@ def clean(table):
         if column not in keep:
             remove.append(column)
     
+    table = table.drop(table[table.Age > 27].index)
     table = table.drop(remove, axis=1)
     
     for column in table:
@@ -88,8 +90,8 @@ if __name__ == '__main__':
             tables.append(clean(pd.read_csv(data_path + filename)))
             
 
-    numerical_data = combine(tables)
-    numerical_data.to_csv('./data/' + sys.argv[1] + '_numerical.csv', float_format='%.3f')
+    numeric_data = combine(tables)
+    numeric_data.to_csv('./data/' + sys.argv[1] + '_numeric.csv', float_format='%.3f')
     
-    ordinal_data = to_ordinal(numerical_data)
+    ordinal_data = to_ordinal(numeric_data)
     ordinal_data.to_csv('./data/' + sys.argv[1] + '_ordinal.csv', float_format='%.0f')

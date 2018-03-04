@@ -86,9 +86,12 @@ if __name__ == '__main__':
         sys.exit(1)
 
     for filename in os.listdir(data_path):
-        if filename[:3] == sys.argv[1]:    
+        if sys.argv[1] == 'AAA' and filename[:3] == sys.argv[1]:    
             tables.append(clean(pd.read_csv(data_path + filename)))
-            
+        elif sys.argv[1] == 'AA' and filename[:3] == sys.argv[1] + '_':    
+            tables.append(clean(pd.read_csv(data_path + filename)))
+        elif sys.argv[1] == 'A' and filename[:2] == sys.argv[1] + '_':    
+            tables.append(clean(pd.read_csv(data_path + filename)))
 
     numeric_data = combine(tables)
     numeric_data.to_csv('./data/' + sys.argv[1] + '_numeric.csv', float_format='%.3f')

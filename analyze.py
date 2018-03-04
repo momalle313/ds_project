@@ -36,8 +36,8 @@ if __name__ == '__main__':
     dt_entropy = dt_entropy.fit(X_train, y_train)
 
     # output a PNG of the decision tree
-    dotfile = 'AAA_entropy.dot'
-    png = 'AAA_entropy.png'
+    dotfile = sys.argv[1] + '_entropy.dot'
+    png     = sys.argv[1] + '_entropy.png'
 
     export_graphviz(dt_entropy, out_file=dotfile, feature_names=features)
     (tree, ) = pydot.graph_from_dot_file(dotfile)
@@ -52,8 +52,8 @@ if __name__ == '__main__':
     dt_gini = dt_gini.fit(X_train, y_train)
 
     # output a PNG of the decision tree
-    dotfile = 'AAA_gini.dot'
-    png = 'AAA_gini.png'
+    dotfile = sys.argv[1] + '_gini.dot'
+    png     = sys.argv[1] + '_gini.png'
 
     export_graphviz(dt_gini, out_file=dotfile, feature_names=features)
     (tree, ) = pydot.graph_from_dot_file(dotfile)
